@@ -17,6 +17,7 @@ import { UpdatecarteComponent } from './updatecarte/updatecarte.component';
 
 
 
+
 @NgModule({
   declarations: [ComptecourantComponent, ComptecourantdetailsComponent, CreatecarteComponent, UpdatecarteComponent],
     imports: [
