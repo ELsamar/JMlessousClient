@@ -9,14 +9,28 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/dashboard',
 					translate: 'MENU.DASHBOARD',
-				},	{
-					title: 'Compte Courant',
+				},{
+					title: 'Comptes',
 					root: true,
 					alignment: 'left',
-					page: '/comptecourant',
-
-				},	{
-					title: 'Compte Courant',
+					toggle: 'click',
+					submenu: [
+						{
+							title: 'Compte courant',
+							page: '/comptecourant',
+						},
+						{
+							title: 'Compte Titres',
+							page: '/comptetitre',
+						},
+						{
+							title: 'compte d\'épargne',
+							page: '/compteepargne',
+						},
+					]
+				},
+				{
+					title: 'Credit',
 					root: true,
 					alignment: 'left',
 					page: '/credit',
@@ -30,14 +44,11 @@ export class MenuConfig {
 					submenu: [
 						{
 							title: 'contrat',
-							bullet: 'dot',
-							icon: 'flaticon-interface-7',
 							page: '/assurance/contrat',
 						},
 						{
 							title: 'test',
-							bullet: 'dot',
-							icon: 'flaticon-web',
+							page: '/test',
 
 						},
 					]

@@ -5,10 +5,35 @@ export class PageConfig {
 				title: 'Dashboard',
 				desc: 'Latest updates and statistic charts'
 			},
-		},comptecourant: {
+		},
+		comptecourant: {
 			page: {
 				title: 'Compte Courant',
 				desc: 'Situation des comptes et derniers opération'
+			},
+		},
+		credit: {
+			page: {
+				title: 'credit',
+				desc: ''
+			},
+		},
+		comptetitre: {
+			page: {
+				title: 'Compte titre',
+				desc: ''
+			},
+		},
+		compteepargne: {
+			page: {
+				title: 'Compte epargne',
+				desc: ''
+			},
+		},
+		contrat: {
+			page: {
+				title: 'contrat',
+				desc: ''
 			},
 		},
 		ngbootstrap: {
