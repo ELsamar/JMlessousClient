@@ -15,6 +15,12 @@ export class MenuConfig {
 					alignment: 'left',
 					page: '/comptecourant',
 
+				},	{
+					title: 'Compte Courant',
+					root: true,
+					alignment: 'left',
+					page: '/credit',
+
 				},
 				{
 					title: 'Assurance',

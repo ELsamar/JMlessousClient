@@ -27,6 +27,11 @@ const routes: Routes = [
 				path: 'assurance',
 				loadChildren: () => import('app/views/pages/assurance/assurance.module').then(m => m.AssuranceModule)
 			},
+			,
+			{
+				path: 'credit',
+				loadChildren: () => import('app/views/pages/credit/credit.module').then(m => m.CreditModule)
+			},
 			{
 				path: 'mail',
 				loadChildren: () => import('app/views/pages/apps/mail/mail.module').then(m => m.MailModule)
