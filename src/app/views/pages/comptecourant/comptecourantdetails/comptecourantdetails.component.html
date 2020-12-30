@@ -1,0 +1,145 @@
+<div class="row">
+	<button (click)="list()" class="btn btn-primary">Retour</button>
+	<div class="col-xl-12">
+		<img src="assets/media/img/devises.jpg" width="1300" height="300">
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xl-8">
+		<kt-portlet [class]="'kt-portlet--height-fluid'">
+			<kt-portlet-header [title]="'Compte Details'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
+				<ng-container ktPortletTools>
+					<kt-context-menu></kt-context-menu>
+				</ng-container>
+			</kt-portlet-header>
+			<kt-portlet-body [class]="'kt-portlet__body--fit'">
+
+			<div *ngIf="cpt">
+	<div>
+		<label><b>Rip: </b></label> {{cpt.rip}}
+	</div>
+	<div>
+		<label><b>Categorie libelle: </b></label> {{cpt.categorie.libelle}}
+	</div>
+	<div>
+		<label><b> dateOuverture : </b></label> {{cpt.dateOuverture | date }}
+	</div>
+	<div>
+		<label><b>solde : </b></label> {{cpt.solde}}
+	</div>
+	<div>
+		<label><b>devise : </b></label> {{cpt.devise}}
+	</div>
+</div>
+			</kt-portlet-body>
+		</kt-portlet>
+	</div>
+	<div class="col-xl-4">
+		<kt-portlet [class]="'kt-portlet--height-fluid'">
+			<kt-portlet-header [title]="'nos compte courant categourie'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
+				<ng-container ktPortletTools>
+
+				</ng-container>
+			</kt-portlet-header>
+			<kt-portlet-body [class]="'kt-portlet__body--fit'">
+
+			</kt-portlet-body>
+		</kt-portlet>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xl-8">
+		<kt-portlet [class]="'kt-portlet--height-fluid'">
+			<kt-portlet-header [title]="'Cartes Details'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
+				<ng-container ktPortletTools>
+					<button class="btn btn-primary" (click)="addcarte()">Demander une carte</button>
+
+				</ng-container>
+			</kt-portlet-header>
+			<kt-portlet-body [class]="'kt-portlet__body--fit'">
+
+				<div *ngIf="!cpt.carte"> Vous n'avez pas une carte. Demandez une carte  </div>
+				<div class="row" *ngIf="cpt.carte">
+
+					<div  *ngFor="let c of cpt.carte">
+					<div class="col">
+					<div>
+						<label><b>numeroCarte: </b></label> {{c.numeroCarte}}
+					</div>
+					<div>
+						<label><b> montant plafond: </b></label> {{c.plafond}}
+					</div>
+					<div>
+						<label><b> montant : </b></label> {{c.montant}}
+
+					</div>
+					<div>
+						<label><b> dateExpiration : </b></label> {{c.dateExpiration | date}}
+					</div>
+					<div>
+						<label><b>statut : </b></label> {{c.statut}}
+					</div>
+					<div>
+						<label><b>codeSecret : </b></label>
+						<span (click)="alert(c.codeSecret)"> ********</span>
+					</div>
+					<div>
+						<label><b></b></label>
+						<button class="btn btn-primary" (click)="updatecarte(c.id)">Modifier carte</button>
+						<button class="btn btn-info" (click)="updatecarte(c.id)">Renouveler carte</button>
+						<button class="btn btn-danger" (click)="updatecarte(c.id)">Déclarer carte Perdue/volée</button>
+					</div>
+					</div>
+					</div>
+				</div>
+
+			</kt-portlet-body>
+		</kt-portlet>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xl-8">
+		<kt-portlet [class]="'kt-portlet--height-fluid'">
+			<kt-portlet-header [title]="'carnet Cheque Details'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
+				<ng-container ktPortletTools>
+					<button> Demander un carnet Cheque</button>
+				</ng-container>
+			</kt-portlet-header>
+			<kt-portlet-body [class]="'kt-portlet__body--fit'">
+				<div *ngIf="!cpt.carnetCheque"> Vous n'avez pas un carnet de Cheque. Demandez un carnet de Cheque  </div>
+				<div *ngIf="cpt.carnetCheque">
+					<div class="col" *ngFor="let c of cpt.carnetCheque">
+						<div>
+							<label><b>nombre: </b></label> {{c.nb}}
+						</div>
+						<div>
+							<label><b> datedemande: </b></label> {{c.datedemande | date }}
+						</div>
+						<div>
+							<label><b> datelivre : </b></label> {{c.datelivre | date }}
+						</div>
+						<div>
+							<label><b>statut : </b></label> {{c.statut}}
+						</div>
+						<div>
+							<label><b>barre : </b></label>
+
+							<div *ngIf="c.barre; else elseBlock">Oui</div>
+							<ng-template #elseBlock>Non</ng-template>
+
+						</div>
+						<div>
+
+							<label><b>nombre de cheques  restant : </b></label>
+							<div *ngIf="c.cheques; else elseBlock">---</div>
+							<ng-template #elseBlock>{{c.nb}}</ng-template>
+
+						</div>
+					</div>
+				</div>
+			</kt-portlet-body>
+		</kt-portlet>
+	</div>
+</div>
+

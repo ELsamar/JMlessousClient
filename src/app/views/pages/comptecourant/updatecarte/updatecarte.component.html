@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col-xl-12">
+		<img src="assets/media/img/cartes.jpg" width="1300" height="300">
+	</div>
+</div>
+<div class="row align-content-center">
+	<div class="col-xl-8">
+		<kt-portlet [class]="'kt-portlet--height-fluid'">
+			<kt-portlet-header [title]="'Modifier carte'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
+
+			</kt-portlet-header>
+			<kt-portlet-body [class]="'kt-portlet__body--fit'">
+
+					<form (ngSubmit)="onSubmit()">
+						<div class="form-group">
+							<label >numero Carte : </label>
+							<input type="text" class="form-control" id="numeroCarte" disabled [(ngModel)]="carte.numeroCarte "  name="numeroCarte">
+						</div>
+						<div class="form-group">
+							<label >plafond</label>
+							<input type="text" class="form-control" id="plafond" [required]="true" [(ngModel)]="carte.plafond" name="plafond">
+						</div>
+						<div class="form-group">
+							<label >montant</label>
+							<input type="text" class="form-control" id="montant" [required]="true" [(ngModel)]="carte.montant" name="montant">
+						</div>
+
+						<div [hidden]="true">
+							<label >statut</label>
+							<input type="text" class="form-control" id="statut" [required]="true" [(ngModel)]="carte.statut" name="statut" >
+						</div>
+						<div class="form-group">
+							<label >date fin</label>
+							<input type="date" class="form-control" id="datefin" disabled  [(ngModel)]="carte.dateExpiration" name="datefin">
+						</div>
+						<div class="form-group">
+							<label >code Secret</label>
+							<input type="password" class="form-control" id="codeSecret" [required]="true" [(ngModel)]="carte.codeSecret" name="codeSecret">
+						</div>
+
+						<button type="submit" class="btn btn-success">modifier</button>
+					</form>
+
+
+
+			</kt-portlet-body>
+		</kt-portlet>
+	</div>
+</div>
+
