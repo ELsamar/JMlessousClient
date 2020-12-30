@@ -30,11 +30,13 @@ export class PageConfig {
 				desc: ''
 			},
 		},
+		assurance: {
 		contrat: {
 			page: {
-				title: 'contrat',
+				title: 'Contrat',
 				desc: ''
 			},
+		}
 		},
 		ngbootstrap: {
 			accordion: {

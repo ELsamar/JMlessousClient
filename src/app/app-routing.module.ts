@@ -36,6 +36,10 @@ const routes: Routes = [
 				loadChildren: () => import('app/views/pages/comptetitre/comptetitre.module').then(m => m.ComptetitreModule)
 			},
 			{
+				path: 'compteepargne',
+				loadChildren: () => import('app/views/pages/compteepargne/compteepargne.module').then(m => m.CompteepargneModule)
+			},
+			{
 				path: 'mail',
 				loadChildren: () => import('app/views/pages/apps/mail/mail.module').then(m => m.MailModule)
 			},
