@@ -9,6 +9,7 @@ export class ComptecourantService {
 	private baseUrl = 'http://localhost:9080/springboot-jmlessous-rest/api/comptecourant';
 	private categUrl ='http://localhost:9080/springboot-jmlessous-rest/api/comptecourantcategorie'
 	private carteUrl ='http://localhost:9080/springboot-jmlessous-rest/api/carte'
+	private operationUrl ='http://localhost:9080/springboot-jmlessous-rest/api/operation'
 	constructor(private http: HttpClient) { }
 
 	getCptclient(id: number): Observable<any> {
@@ -46,8 +47,27 @@ export class ComptecourantService {
 	getCarte(id: number): Observable<any> {
 		return this.http.get(`${this.carteUrl}/${id}`);
 	}
-
 	updateCarte(id: number, value: any): Observable<Object> {
 		return this.http.put(`${this.carteUrl+'/update'}/${id}`, value);
+	}
+	renouvelleCarte(id: number, montant: any): Observable<Object> {
+		return this.http.put(`${this.carteUrl+'/renouvelle'}/${id}`, montant);
+	}
+	traiteStatutCarte(id: number, value: any): Observable<Object> {
+		return this.http.put(`${this.carteUrl+'/traiteStatut'}/${id}`, value);
+	}
+	//*****Operation******//
+	findOpByCpt(id: number): Observable<any> {
+		return this.http.get(`${this.operationUrl+'/bycpt'}/${id}`);
+	}
+	findOpByStatut(statut: string): Observable<any> {
+		return this.http.get(`${this.operationUrl+'/bystatut'}/${statut}`);
+	}
+
+	createOperation(op: Object,id: number): Observable<Object> {
+		return this.http.post(`${this.operationUrl+'/add'}/${id}`, op);
+	}
+	virement(op: Object,id: number,rip: number): Observable<Object> {
+		return this.http.post(`${this.operationUrl+'/virement'}/${id}/${rip}`, op);
 	}
 }

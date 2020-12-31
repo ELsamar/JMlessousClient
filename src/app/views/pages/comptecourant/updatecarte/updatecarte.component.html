@@ -17,6 +17,10 @@
 							<input type="text" class="form-control" id="numeroCarte" disabled [(ngModel)]="carte.numeroCarte "  name="numeroCarte">
 						</div>
 						<div class="form-group">
+							<label >Type Carte : </label>
+							<input type="text" class="form-control" id="libelle" disabled [(ngModel)]="carte.libelle "  name="libelle">
+						</div>
+						<div class="form-group">
 							<label >plafond</label>
 							<input type="text" class="form-control" id="plafond" [required]="true" [(ngModel)]="carte.plafond" name="plafond">
 						</div>
@@ -30,7 +34,7 @@
 							<input type="text" class="form-control" id="statut" [required]="true" [(ngModel)]="carte.statut" name="statut" >
 						</div>
 						<div class="form-group">
-							<label >date fin</label>
+							<label >date Expiration</label>
 							<input type="date" class="form-control" id="datefin" disabled  [(ngModel)]="carte.dateExpiration" name="datefin">
 						</div>
 						<div class="form-group">
@@ -39,6 +43,7 @@
 						</div>
 
 						<button type="submit" class="btn btn-success">modifier</button>
+						<button (click)="ngOnInit()" class="btn btn-danger">annuler</button>
 					</form>
 
 

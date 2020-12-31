@@ -67,13 +67,17 @@
 					<div>
 						<label><b>numeroCarte: </b></label> {{c.numeroCarte}}
 					</div>
+						<div>
+							<label><b> Type carte: </b></label> {{c.libelle}}
+						</div>
 					<div>
 						<label><b> montant plafond: </b></label> {{c.plafond}}
 					</div>
-					<div>
-						<label><b> montant : </b></label> {{c.montant}}
 
-					</div>
+						<div *ngIf="c.prepayee; else elsepre">
+						<label><b> montant prepayee: </b></label> {{c.montant}}</div>
+						<ng-template #elsepre> <label>carte non prepayee </label> </ng-template>
+
 					<div>
 						<label><b> dateExpiration : </b></label> {{c.dateExpiration | date}}
 					</div>
@@ -87,9 +91,12 @@
 					<div>
 						<label><b></b></label>
 						<button class="btn btn-primary" (click)="updatecarte(c.id)">Modifier carte</button>
-						<button class="btn btn-info" (click)="updatecarte(c.id)">Renouveler carte</button>
-						<button class="btn btn-danger" (click)="updatecarte(c.id)">Déclarer carte Perdue/volée</button>
+						<button class="btn btn-info" (click)="renouvelleCarte(c.id)">Renouveler carte</button>
 					</div>
+						<div>
+							<label><b></b></label>
+							<button class="btn btn-danger" (click)="Perdue(c.id)">Déclarer carte Perdue/volée</button>
+						</div>
 					</div>
 					</div>
 				</div>
