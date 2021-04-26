@@ -1,0 +1,60 @@
+<p>virement works!</p>
+<div class="row">
+	<div class="col-xl-4">
+		<kt-portlet [class]="'kt-portlet--height-fluid'">
+			<kt-portlet-header [title]="'Effectuer virement'">
+
+			</kt-portlet-header>
+			<kt-portlet-body>
+				<div [hidden]="submitted" >
+					<form (ngSubmit)="onSubmit()">
+						<div class="form-group">
+							<mat-form-field appearance="fill">
+								<mat-label>rip votre compte Courant </mat-label>
+								<mat-select [(ngModel)]="operation.compteCourant"  name="eng" >
+									<mat-option *ngFor="let i of allcpts" [value]="i.value" >
+										{{i.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+						<div class="form-group">
+							<mat-form-field appearance="fill">
+								<mat-label>type d'operation </mat-label>
+								<mat-select [(ngModel)]="operation.interBank"  name="prep" >
+									<mat-option *ngFor="let i of interbank" [value]="i.value" >
+										{{i.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+						</div>
+						<div >
+							<label >Rip beneficaire </label>
+							<input type="text" class="form-control" id="rip" required [(ngModel)]="rip" name="rip"  >
+						</div>
+						<div >
+							<label >Montant </label>
+							<input type="text" class="form-control" id="montant" required [(ngModel)]="operation.montant" name="montant"  >
+						</div>
+						<div class="form-group">
+							<mat-form-field appearance="fill">
+								<mat-label>devise </mat-label>
+								<mat-select [(ngModel)]="operation.devise"  name="lib" >
+									<mat-option *ngFor="let i of devise" [value]="i.value" >
+										{{i.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+						</div>
+
+
+						<button type="submit" class="btn btn-success">Envoyer</button>
+						<button  (click)="ngOnInit()"class="btn btn-danger">Annuler</button>
+					</form>
+				</div>
+				<div [hidden]="!submitted">
+					<h4>{{operation.statut}}!</h4>
+					<button class="btn btn-success" (click)="newoperation()">Nouveau virement</button>
+				</div>

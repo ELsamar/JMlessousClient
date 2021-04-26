@@ -1,0 +1,34 @@
+
+<a style="cursor: pointer" (click)="captureScreen()">Télécharger pdf<mat-icon>description</mat-icon></a>
+
+<div id="contentToConvert">
+<div class="card">
+	 rib : {{cpt.rip}} solde : {{cpt.solde}} {{cpt.devise}}
+	<br>
+
+</div>
+	<br>
+<div class="card">
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>reference</th>
+		<th>date operation</th>
+		<th>libele</th>
+		<th>montant</th>
+		<th>devise</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr *ngFor="let op of operations | async">
+		<td>{{op.reference}}  </td>
+		<td>{{op.dateoperation | date}}</td>
+		<td>{{op.libele}}</td>
+		<td>{{op.montant}}</td>
+		<td>{{op.devise}}</td>
+	</tr>
+	<tr > <td></td><td></td> <td>somme</td> <td>----</td></tr>
+	</tbody>
+</table>
+</div>
+</div>
