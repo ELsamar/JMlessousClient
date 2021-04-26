@@ -4,7 +4,7 @@ export class MenuConfig {
 			self: {},
 			items: [
 				{
-					title: 'Dashboards',
+					title: 'Accueil',
 					root: true,
 					alignment: 'left',
 					page: '/dashboard',

@@ -38,6 +38,9 @@ const routes: Routes = [
 			{
 				path: 'compteepargne',
 				loadChildren: () => import('app/views/pages/compteepargne/compteepargne.module').then(m => m.CompteepargneModule)
+			},{
+				path: 'chat',
+				loadChildren: () => import('app/views/pages/chat/chat.module').then(m => m.ChatModule)
 			},
 			{
 				path: 'mail',

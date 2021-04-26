@@ -1,10 +1,7 @@
 
 <div class="row">
-	<div class="col-xl-8">
-		<div class="row row-full-height">
-			<div class="col-sm-12 col-md-12 col-lg-8">
-
-			<kt-portlet [class]="'kt-portlet--height-fluid'">
+	<div class="col-8">
+	<kt-portlet [class]="'kt-portlet--height-fluid'">
 			<kt-portlet-header [title]="'Situation de mes comptes'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
 				<ng-container ktPortletTools>
 					<kt-context-menu></kt-context-menu>
@@ -61,24 +58,64 @@
 
 			</kt-portlet-body>
 		</kt-portlet>
+		<div class="kt-space-20"></div>
 	</div>
-
-		</div>
-	</div>
-	<div class="col-sm-12 col-md-12 col-lg-4">
+	<div class="col-4">
 		<kt-portlet [class]="'kt-portlet--height-fluid'">
 			<kt-portlet-header [title]="'Derniers opération'">
 				<ng-container ktPortletTools>
-					<kt-context-menu2></kt-context-menu2>
+
+					<mat-form-field appearance="fill">
+						<mat-label>rip votre compte Courant </mat-label>
+						<mat-select [(ngModel)]="compteCourant"  name="eng" >
+							<mat-option *ngFor="let i of allcpts" [value]="i.value"  (click)="reloadOp(i.value.id)" >
+								{{i.viewValue}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
 				</ng-container>
 			</kt-portlet-header>
 			<kt-portlet-body>
-				<kt-timeline2></kt-timeline2>
+			<!--	<kt-timeline2></kt-timeline2>-->
+				<div perfectScrollbar [ngStyle]="{'max-height': '50vh'}" class="kt-timeline-v2">
+					<div class="kt-timeline-v2__items kt-padding-top-25 kt-padding-bottom-30">
+						<ng-container *ngFor="let item of allOp">
+							<ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
+						</ng-container>
+					</div>
+				</div>
+
+				<ng-template #itemTemplate let-item="item">
+					<div class="kt-timeline-v2__item">
+						<div class="kt-timeline-v2__item-time" >{{item.time | date:'mediumDate'}}  </div>
+
+						<div class="kt-timeline-v2__item-cricle">
+							<i [ngClass]="item.icon ? item.icon :'fa fa-genderless'"></i>
+						</div>
+						<div class="kt-timeline-v2__item-text kt-padding-top-5" [innerHTML]="item.text"></div>
+
+						<div class="kt-list-pics kt-list-pics--sm kt-padding-l-20" [innerHTML]="item.attachment"></div>
+					</div>
+				</ng-template>
+				<button> </button>
+				<button mat-raised-button color="primary" 	(click)="gotolistOp(compteCourant.id)">voir plus</button>
 			</kt-portlet-body>
 		</kt-portlet>
 	</div>
 
 
 </div>
+<div class="row">
+	<kt-portlet [class]="'kt-portlet--height-fluid'">
+		<kt-portlet-header [title]="'Effectuer virement'" [class]="'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'">
+			<ng-container ktPortletTools>
+			</ng-container>
+		</kt-portlet-header>
+		<kt-portlet-body [class]="'kt-portlet__body--fit'">
+			<button class="btn btn-primary" (click)="virement()">faire un virement</button>
+		</kt-portlet-body>
+	</kt-portlet>
+</div>
+
 
 

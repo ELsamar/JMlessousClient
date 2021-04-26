@@ -1,0 +1,69 @@
+<div class="card">
+		{{cpt.categorie.libelle }}
+		<button class="btn btn-success" (click)="onSubmit()">afficher extrait</button>
+</div>
+
+<div class="row">
+	<div class="col">
+<mat-form-field>
+		<mat-label>Filter</mat-label>
+		<label>
+			<input matInput (keyup)="applyFilter($event)" placeholder="">
+		</label>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataTable"   class="mat-elevation-z8 " >
+
+	<ng-container matColumnDef="datevaleur">
+		<th mat-header-cell *matHeaderCellDef> datevaleur </th>
+		<td mat-cell *matCellDef="let element"> {{element.datevaleur | date:'medium' }} </td>
+	</ng-container>
+	<ng-container matColumnDef="libele">
+		<th mat-header-cell *matHeaderCellDef> libele </th>
+		<td mat-cell *matCellDef="let element"> {{element.libele}} </td>
+	</ng-container>
+	<ng-container matColumnDef="reference">
+		<th mat-header-cell *matHeaderCellDef> reference </th>
+		<td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+	</ng-container>
+
+	<ng-container matColumnDef="dateoperation">
+		<th mat-header-cell *matHeaderCellDef> dateoperation </th>
+		<td mat-cell *matCellDef="let element"> {{element.dateoperation  | date }} </td>
+	</ng-container>
+	<ng-container matColumnDef="montant">
+		<th mat-header-cell *matHeaderCellDef> montant </th>
+		<td mat-cell *matCellDef="let element"> {{element.montant}} </td>
+	</ng-container>
+	<ng-container matColumnDef="devise">
+		<th mat-header-cell *matHeaderCellDef> devise </th>
+		<td mat-cell *matCellDef="let element"> {{element.devise}} </td>
+	</ng-container>
+	<ng-container matColumnDef="statut">
+		<th mat-header-cell *matHeaderCellDef> statut </th>
+		<td mat-cell *matCellDef="let element"> {{element.statut}} </td>
+	</ng-container>
+	<ng-container matColumnDef="interBank">
+		<th mat-header-cell *matHeaderCellDef> interBank </th>
+		<td mat-cell *matCellDef="let element"> {{element.interBank}} </td>
+	</ng-container>
+
+	<tr mat-header-row class="table_blue"  *matHeaderRowDef="displayedColumns "></tr>
+	<tr mat-row (mouseover)="highlightRow(row)" [ngClass]="{'make-gold': row.montant == 0 }" *matRowDef="let row; columns: displayedColumns; "
+
+	></tr>
+</table>
+	</div>
+
+	<div [hidden]="!submitted">
+
+	<div class="col">
+		<kt-portlet [class]="'kt-portlet--height-fluid-half kt-portlet--border-bottom-brand'">
+			<kt-portlet-body [class]="'kt-portlet__body--fluid'">
+				<kt-extraitbancaire [idCpt]="1"></kt-extraitbancaire>
+			</kt-portlet-body>
+		</kt-portlet>
+
+</div>
+	</div>
+</div>

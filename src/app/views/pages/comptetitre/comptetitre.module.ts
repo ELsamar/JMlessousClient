@@ -4,6 +4,11 @@ import { ComptetitreComponent } from './comptetitre/comptetitre.component';
 import {PartialsModule} from '../../partials/partials.module';
 import {CoreModule} from '../../../core/core.module';
 import {RouterModule} from '@angular/router';
+import {MatFormFieldModule, MatIconModule, MatSelectModule} from '@angular/material';
+import {PortletModule} from '../../partials/content/general/portlet/portlet.module';
+import {FormsModule} from '@angular/forms';
+import {MatTableModule} from '@angular/material';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -20,6 +25,9 @@ import {RouterModule} from '@angular/router';
 				component: ComptetitreComponent
 			},
 		]),
+		MatFormFieldModule,
+		MatTableModule,
+		MatInputModule,
 	]
 })
 export class ComptetitreModule { }
